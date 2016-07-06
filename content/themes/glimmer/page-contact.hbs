@@ -1,0 +1,96 @@
+{{!< default}}
+{{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
+
+{{! This bellow code is for loading header aria}}
+{{> "header"}}
+
+{{! This code to show Post in single page }}
+{{#post}}
+    <!-- Main Content
+    ================================================== -->
+	<div id="content" class="site-content contact-page">
+		<div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="header-title">
+                        <h2 class="section-title"><span>{{title}}</span></h2>
+                    </div> <!-- /.header-title --> 
+                </div> <!-- /.col-md-12 -->
+            </div> <!-- /.row -->
+
+			<div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <!-- Maps Area -->
+                    <div class="gmaps-area">
+                        <div id="gmaps"></div>                                   
+                    </div> <!-- /.gmaps-area -->
+
+                    <div class="clear"></div>
+
+                    <!-- Contact Details -->
+                    <div class="contact-details">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="address-main">
+                                    <span>Glimmer Creative Agency, 02 Melborn, Australia</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="entry-content">
+                                    {{content}} 
+                                </div> <!-- /.entry-content -->  
+                            </div>
+                            <div class="col-md-4 col-md-offset-1">
+                                <div id="contact-info">                                   
+                                    <dl class="dl-horizontal"></dl>    
+                                </div>     
+                            </div>
+                        </div> <!-- /.row -->
+
+                         <!-- <div class="row" id="contact-form-wrap">
+                            <div class="col-md-12">
+                                <div class="contact-respond" id="respond">                            
+                                    <form name="contactForm" id='contact_form' method="post" action='send-mail.php'>
+
+                                        <div class="row">
+                                            <div class="col-md-4 padding-right">
+                                                <p>
+                                                    <input type='text' name='name' id='name' class="form-controller"  aria-required="true" placeholder="Name*">
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4 padding-left-right">
+                                                <p>
+                                                    <input type='text' name='email' id='email' class="form-controller"  aria-required="true" placeholder="Email*">
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4 padding-left">
+                                                <p>
+                                                    <input type='text' name='subject' id='subject' class="form-controller"  aria-required="true" placeholder="Subject*">
+                                                </p>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <p>
+                                                    <textarea name='message' id='message' class="form-controller" aria-required="true" rows="8" cols="45" placeholder="Write a Comment...."></textarea>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <p class="form-submit">
+                                                    <input type="submit" value="Submit" id="submit" name="submit">
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </form>         
+                                                 
+                                </div>
+                            </div>
+                        </div> --> <!-- /.row -->
+                    </div> <!-- /.contact-details -->
+                </div> <!-- /.col-md-10 -->
+			</div> <!-- /.row -->
+		</div> <!-- /.container -->
+	</div><!-- #content -->
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=true"></script><!-- gmaps -->
+    <script src="{{asset "js/gmaps.js"}}"></script> <!-- gmaps --> 
+{{/post}}

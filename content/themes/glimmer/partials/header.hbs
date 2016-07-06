@@ -1,0 +1,163 @@
+<div class="preloader hidden" id="preloader">
+    <div class="preloader-logo">
+        {{#if @blog.logo}}
+            <img class="img-responsive" src="{{@blog.logo}}" alt="{{@blog.title}}" />
+        {{else}}
+            <img class="img-responsive" src="{{asset "images/logo.png"}}" alt="{{@blog.title}}" />
+        {{/if}}
+    </div> <!-- /.preloader-logo -->
+
+    <div class="loader">
+        <script type="text/javascript">
+            var preloader_animated_icon = Pre_Loader['animation_icon'];
+            if ( preloader_animated_icon == 1 ) {
+                var animated_icon =  "fa-spinner fa-pulse";
+            } else if ( preloader_animated_icon == 2 ) {
+                var animated_icon = "fa-spinner fa-spin";
+            } else if ( preloader_animated_icon == 3 ) {
+                var animated_icon = "fa-circle-o-notch fa-spin";
+            } else if ( preloader_animated_icon == 4 ) {
+                var animated_icon = "fa-refresh fa-spin";
+            } else if ( preloader_animated_icon == 5 ) {
+                var animated_icon = "fa-cog fa-spin";
+            } else {
+                var animated_icon = "";
+            }
+
+            document.write('<i class="fa '+animated_icon+'"></i>');
+        </script>
+    </div>  <!-- /.loader -->
+</div> <!-- /.preloader -->
+
+<script type="text/javascript">
+
+    function getUrlParameterForPreloader(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+
+    var preloader = getUrlParameterForPreloader('preloader');
+
+    if ( preloader == "on" || Pre_Loader['show'] == true ) {
+        document.getElementById("preloader").classList.remove("hidden");
+    }
+
+</script>
+<!-- Header
+================================================== -->
+<header id="masthead" class="site-header">
+   <!-- Header Top -->
+    <div id="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="header-search">
+                    <div class="search default">
+                        <form method="get" action="#" class="searchform">
+                            <div class="input-group">
+                                <input id="glimmer-search" type="search" value="Search..." class="form-control">
+                                <span class="input-group-btn">
+                                    <button id="submit-btn" type="button" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </form>
+                    </div> <!-- /.search -->
+                </div> <!-- /.header-search -->
+
+                <div class="header-social"></div> <!-- /.top-social -->
+                <div id="glimmer-search-result"></div>
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /#header-top -->
+
+    <!-- Site Logo -->
+    <div id="header-middle">
+        <div class="container">
+            <div class="row">
+                <nav id="nav-left" class="site-navigation top-navigation">
+                    <div class="menu-wrapper">
+                        <div class="menu-content">
+                            <ul class="menu-list mobile-sub" id="left-navigation"></ul>
+                        </div>
+                    </div>
+                </nav>
+                <div id="site-logo">
+                  <a href="{{@blog.url}}" class="site-logo" id="site-logo-main">
+                    <img class="img-responsive" src="https://s3.amazonaws.com/miloblog-testing/2016/Jun/logo-1467125787135.svg" alt="{{@blog.title}}" /> 
+                  </a>
+                </div>
+                <nav id="nav-right" class="site-navigation top-navigation menu-right">
+                    <div class="menu-wrapper">
+                        <div class="menu-content">
+                            <ul class="menu-list" id="right-navigation"></ul>
+                        </div>
+                    </div>
+                </nav>
+                <div class="site-message">
+                    <h2>On a mission to help pet parents provide happier, healthier longer lives for our furry favorites.</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="menucontent overlapblackbg"></div>
+    <div class="menuexpandermain slideRight">
+        <a id="navToggle" class="animated-arrow slideLeft"><span></span></a>
+        <span id="menu-marker">Menu</span>
+    </div>
+
+    <div id="mobile-menu">
+        <nav class="top-menu slideLeft clearfix">
+            <div class="menu-wrapper">
+                <div class="container">
+                    <div class="row" id="mobile-menu-wrap">
+                        <ul class="menu-list">
+                            <script>
+                                 if ( dynamic_ghost_nav === true  ) {
+                                        document.write('{{navigation}}');
+                                    } else {
+                                        document.write('{{> "navigation-custom"}}');
+                                    }
+                            </script>
+                        </ul>
+                    </div>
+                </div>
+            </div> <!-- /.menu-wrapper -->
+        </nav> <!-- /.menu  -->
+    </div> <!-- /.#mobile menu -->
+</header> <!-- /.site-header -->
+
+<script>
+    function getUrlParameters(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+
+    var layout = getUrlParameters('layout');
+    var post_layout = getUrlParameters('post_layout');
+    if ( post_layout === 'grid' ) {
+        var Post_Layout = "grid";
+    } else if ( post_layout === 'list' ) {
+        var Post_Layout = "list";
+    }
+</script>

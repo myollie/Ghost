@@ -1,0 +1,41 @@
+# AWS
+*.pem
+
+# Editors
+.*.sw[a-z]
+.\#*
+.idea
+.project
+.pydevproject
+\#*\#
+*~
+auto-save-list
+
+# Node
+node_modules
+
+# Python
+__pycache__
+*.py[cod]
+*.egg
+*.egg-info
+.DS_Store
+build
+develop-eggs
+dist
+eggs
+sdist
+
+# Logs
+*.log
+*.log.*
+nohup.out
+pip-log.txt
+
+# Vagrant
+.vagrant
+
+# Other
+*.pid
+*.out
+

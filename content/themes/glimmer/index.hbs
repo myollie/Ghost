@@ -1,0 +1,90 @@
+{{!< default}}
+{{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
+
+{{! This bellow code is for loading header aria}}
+{{> "header"}}
+
+{{! This code is for Load slider only in homepage }}
+<script>
+    if ( Sticky_Post['show'] === true  ) {
+        document.write('{{#is "home"}}{{> "feat-slide"}}{{/is}}');
+    }
+</script>
+
+<!-- Content
+================================================== -->
+<div id="content" class="site-content">
+
+{{#is "home"}}
+    <script>
+        if ( Sticky_Post['show'] === true  ) {
+
+            $(document).ready(function () {
+                if ( layout === "full-width" ) {
+
+                    $( "#primary" ).wrap( "<div class='col-md-12' id='blog-content'></div>" );
+                    $( "#main-layout > #blog-content" ).wrapAll( "<div class='row'></div>" );
+
+                } else {
+
+                    $(document).ready(function () {
+                        if( theme_layout !== "full-width" ){
+                            $(".sticky-container").attr("id","blog-content");
+                        }
+
+                        if( theme_layout === "full-width" ){
+
+                            $( "#primary" ).wrap( "<div class='col-md-12' id='blog-content'></div>" );
+                            $( "#main-layout > #blog-content" ).wrapAll( "<div class='row'></div>" );
+                        }
+                   });
+                }
+            });
+        }
+    </script>
+{{/is}}   
+
+    <div class="container sticky-container">
+        <div class="row">
+            <div class="col-md-8" id="main-layout">
+                <!-- Content Area -->
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main">
+                        <div class="row">
+                            <div class="col-md-12 full-width">
+                                {{#foreach posts}}
+                                    {{#if featured}}
+                                        {{> "loop"}}
+                                    {{/if}}
+                                {{/foreach}}                        
+                            </div> <!-- /.col-md-12 -->
+
+                            <div class="col-md-12 ">
+                                <script>
+                                     $(document).ready(function () {
+                                        if ( Post_Layout == "grid") { 
+                                            $(".main-index").attr("id","masonry-layout");
+                                        }
+                                    });
+                                </script>
+                                <div class="main-index row">
+                                    {{#foreach posts}}
+                                        {{#unless featured}}
+                                            {{> "loop"}}
+                                        {{/unless}}
+                                    {{/foreach}}
+                                </div> <!-- / .row -->      
+                            </div> <!-- /.col-md-12 -->
+                        </div> <!-- /.row -->
+                    </main> <!-- #main -->
+
+                    <!-- pagination -->
+                        {{pagination}}
+                    <!-- /.navigation -->
+                </div> <!-- #primary -->
+            </div> <!-- /.col-md-8 -->
+            {{> "sidebar"}}
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    
+</div><!-- #content -->

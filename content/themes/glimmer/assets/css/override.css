@@ -1,0 +1,93 @@
+/*--------------------------------------------------------------
+# Modifications made at Sir Milo.
+--------------------------------------------------------------*/
+.follow-us-area .follow-link .fa {
+    font-size: 1.5em;
+    line-height: 1.6em;
+}
+
+.content-area .entry-footer .share-area a span,
+.follow-us-area .follow-link .fa {
+    border-width: 0px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.content-area .entry-footer .share-area a span:hover,
+.follow-us-area .follow-link .fa:hover
+{
+	color: #FFF;
+	transform: scale(1.1);
+	box-shadow: 1px 1px 3px #333;
+	transition: all 0.3s ease;
+}
+
+.content-area .entry-footer .share-area .fa-facebook,
+.follow-us-area .follow-link .fa-facebook,
+.content-area .entry-footer .share-area a .fa-facebook:hover,
+.follow-us-area .follow-link .fa-facebook:hover
+{
+    background-color: #3C599F;
+}
+
+.content-area .entry-footer .share-area .fa-twitter,
+.follow-us-area .follow-link .fa-twitter,
+.content-area .entry-footer .share-area a .fa-twitter:hover,
+.follow-us-area .follow-link .fa-twitter:hover
+{
+    background-color: #32CCFE;
+}
+
+.content-area .entry-footer .share-area .fa-instagram,
+.follow-us-area .follow-link .fa-instagram,
+.content-area .entry-footer .share-area a .fa-instagram:hover,
+.follow-us-area .follow-link .fa-instagram:hover
+{
+    background-color: #A1755C;
+}
+
+.content-area .entry-footer .share-area .fa-pinterest-p,
+.follow-us-area .follow-link .fa-pinterest-p,
+.content-area .entry-footer .share-area a .fa-pinterest-p:hover,
+.follow-us-area .follow-link .fa-pinterest-p:hover
+{
+    background-color: #CC2127;
+}
+
+.content-area .entry-footer .share-area .fa-google-plus,
+.follow-us-area .follow-link .fa-google-plus,
+.content-area .entry-footer .share-area a .fa-google-plus:hover,
+.follow-us-area .follow-link .fa-google-plus:hover
+{
+    background-color: #CF3D2E;
+}
+
+.content-area .entry-footer .share-area .fa-linkedin,
+.follow-us-area .follow-link .fa-linkedin,
+.content-area .entry-footer .share-area a .fa-linkedin:hover,
+.follow-us-area .follow-link .fa-linkedin:hover
+{
+    background-color: #0085AE;
+}
+
+.content-area .entry-footer {
+    margin-top: 12px;
+}
+
+a {
+  color: #ff5543;
+}
+
+.modal-body {
+  background-color: #f7f7f7;
+}
+
+.site-message h2 {
+  font-size: 16px;
+  font-style: italic;
+}
+
+#firstname,
+#lastname
+{
+  width: 50%;
+}

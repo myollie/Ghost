@@ -1,0 +1,93 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <title>
+            {{#is "author"}}
+                {{author.name}} | {{@blog.title}}
+            {{else}}
+                {{meta_title}} | {{meta_description}}
+                {{#is "post, page"}}
+                    {{@blog.title}}
+                {{/is}}
+            {{/is}}
+        </title>
+        <meta name="description" content="{{meta_description}}" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="{{asset "images/favicon.ico"}}">
+
+        <!-- Custom Font
+        ================================================== -->
+        <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic%7CLato:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{asset "fonts/font-awsome/css/font-awesome.min.css"}}">
+        <link rel="stylesheet" href="{{asset "fonts/glimmer/glimmer-shape.css"}}">
+
+        <!-- CSS
+        ================================================== -->
+        <link rel="stylesheet" href="{{asset "lib/bootstrap/css/bootstrap.css"}}">
+        <link rel="stylesheet" href="{{asset "css/plugin.css"}}">
+        <link rel="stylesheet" href="{{asset "css/screen.css"}}">
+        <link rel="stylesheet" href="{{asset "colors/color-schemer.css"}}">
+        <link rel="stylesheet" href="{{asset "css/override.css"}}">
+
+        <!-- Modernizr
+        ================================================== -->
+        <script src="{{asset "js/vendor/modernizr-2.8.3.min.js"}}"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{{asset "js/vendor/jquery-1.11.3.min.js"}}"><\/script>')</script>
+        <script src="{{asset "js/vendor/jquery-migrate.min.js"}}"></script> <!-- plugins -->
+        <script src="{{asset "js/vendor/js.cookie.js"}}"></script> <!-- js cookie -->
+
+        <!-- Ollie Glimmer Customizations & settings
+        =================================================== -->
+
+
+        {{! Ghost outputs important style and meta data with this tag }}
+        {{ghost_head}}
+	</head>
+
+	<body class="{{body_class}}">
+        <div class="modal fade" tabindex="-1" role="dialog" id="subscribe-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{> "widgets/newsletter-widget"}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{! Everything else gets inserted here }}
+        {{{body}}}
+
+        {{> "footer"}}
+
+        {{! Ghost outputs important scripts and data with this tag }}
+        {{ghost_foot}}
+
+        <!-- All The JS Files
+        ================================================== -->
+        <script src="{{asset "lib/bootstrap/js/bootstrap.min.js"}}"></script> <!-- bootstrap -->
+        <script src="{{asset "js/plugins.js"}}"></script> <!-- Plugings js -->
+        <script src="{{asset "js/glimmer.js"}}"></script> <!-- glimmer script -->
+        <script type="text/javascript">
+        $(window).on('scroll', function() {
+          if($(window).scrollTop() < $(window).height()) {
+            return;
+          }
+          var modal_id = '#subscribe-modal';
+          if (Mailchimp_Widget['show'] === true && Cookies.get(modal_id) != 'closed' && Cookies.get(modal_id) != 'subscribed') {
+            $(modal_id).modal('show');
+            $(modal_id).on('hidden.bs.modal', function (e) {
+              if (Cookies.get(modal_id) != 'subscribed') {
+                Cookies.set(modal_id, 'closed', {expires: 3});
+              }
+            });
+          };
+        });
+        </script>
+	</body>
+</html>

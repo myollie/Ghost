@@ -1,0 +1,238 @@
+ {{! This code is only for post single page  }}
+{{#is "post"}}
+    <script>
+        var Post_Layout = "list";
+    </script>
+{{/is}}
+
+{{#is "author, tag"}}
+    <div class="add-post-class">
+    <script>
+        if ( Post_Layout === "list") {
+            $(".add-post-class").addClass("col-md-12 full-width");
+        } else if ( Post_Layout === "grid") { // If post layout grid
+            $(".add-post-class").addClass("col-md-6 col-sm-6 grid");
+        }
+    </script>
+{{else}}    
+    {{#if featured}} 
+        <div class="featured-posts {{^is "post, home,"}}col-md-12{{/is}}" >
+    {{else}} 
+        <div class="add-post-class">
+        <script>
+            if ( Post_Layout === "list") {
+                {{#is "post"}}
+                    $(".add-post-class").addClass("full-width");
+                {{else}}
+                    $(".add-post-class").addClass("col-md-12 full-width");
+                {{/is}}
+            } else if ( Post_Layout === "grid") { // If post layout grid
+                $(".add-post-class").addClass("col-md-6 col-sm-6 grid");
+            }
+        </script>
+    {{/if}}
+{{/is}}
+
+<article class="{{post_class}} hentry format-{{#has tag="quote"}}quote{{/has}}{{#has tag="gallery"}}gallery{{/has}}{{#has tag="link"}}link{{/has}}{{#has tag="audio"}}audio{{/has}} {{^if image}}{{^has tag="gallery"}}no-image{{/has}}{{/if}}">
+    {{#if image}} {{! For image post / link, status, gallery  }}
+        {{^has tag="link, status, gallery"}}
+            <figure class="post-thumb">
+                <a href="{{url}}">
+                    <img src="{{image}}" class="img-responsive" alt="{{title}}">
+                </a>
+            </figure> {{! /.post-thumb  }}
+            {{/has}}
+    {{/if}} {{! / For image post  }}
+
+    {{#has tag="audio, video, gallery, status"}}
+        <figure id="thumbnail-preview-{{id}}" class="post-thumb"></figure>
+    {{/has}}
+    {{#if featured}}
+        <figure id="thumbnail-preview-{{id}}" class="post-thumb"></figure>
+    {{/if}}
+
+    {{#has tag="link"}} {{! For link post  }}
+        <div class="post-link">
+            <div class="post-link-wrapper">
+               <div style="display:none;">{{content}}</div>
+                <div class="tb">
+                    <div class="icon-area tb-cell">
+                        <i class="fa fa-link"></i>
+                    </div>
+                    <div class="link-content tb-cell">
+                        <script type="text/javascript">
+                            document.write('<h2><a href="'+Link_Url+'" target="_blank">'+Link_Title+'</a></h2><a href="'+Link_Url+'" target="_blank">'+Link_Url+'</a>');
+                        </script>
+                    </div>
+                </div> {{! /.tb  }}
+            </div>
+            <div class="images"><img alt="Link post" src="{{image}}">
+            </div>
+        </div>
+    {{/has}} {{! / For link post  }}
+
+    {{#has tag="status"}} {{!  Structure for Status Tag  }}
+        <div class="post-media">
+            <div style="display:none;">{{content}}</div>
+            <div class="post-status-wrapper" {{#if image}} style="background-image:url({{image}})" {{/if}}>
+                <script type="text/javascript"> 
+
+                    if ( Post_Layout === "list" ) {
+                                    
+                        // this script to load status post
+                        function includeJs(jsFilePath) {
+                            var js = document.createElement("script");
+                            js.type = "text/javascript";
+                            js.src = jsFilePath;
+                            document.body.appendChild(js);
+                        }
+
+                        if (Status_Type == "facebook") {
+                            document.write('<div class="fb-post" data-href="' + Status_Url + '"></div>');
+                        } else if (Status_Type == "twitter") {
+                            document.write('<blockquote class="twitter-tweet"><a href="' + Status_Url + '"></a></blockquote>');
+                            includeJs("//platform.twitter.com/widgets.js");
+                        } else if (Status_Type == "google_plus") {
+                            document.write('<div class="g-post" data-href="' + Status_Url + '"></div>');
+                            includeJs("//apis.google.com/js/plusone.js");
+                        }
+
+                    } else {
+
+                        if ( Status_Type === "facebook") {
+                            document.write('{{^is "post"}}<a href="{{url}}">{{/is}}<div class="link-content tb-cell"><img src="{{@blog.url}}/assets/images/facebook.png" alt="'+Status_Type+'" /></div>{{^is "post"}}</a>{{/is}}');
+                        } else if ( Status_Type === "twitter") {
+                             document.write('{{^is "post"}}<a href="{{url}}">{{/is}}<div class="link-content tb-cell"><img src="{{@blog.url}}/assets/images/twitter.png" alt="'+Status_Type+'" /></div>{{^is "post"}}</a>{{/is}}');
+                        } else if ( Status_Type === "google_plus") {
+                             document.write('{{^is "post"}}<a href="{{url}}">{{/is}}<div class="link-content tb-cell"><img src="{{@blog.url}}/assets/images/google-plus.png" alt="'+Status_Type+'" /></div>{{^is "post"}}</a>{{/is}}');
+                        }
+                    }  
+                </script>
+             </div> {{! /.post-status-wrapper  }}
+        </div>{{! /.post-media  }}
+    {{/has}} {{! End of Structure for Status Tag  }}
+
+    {{^has tag="quote"}} 
+        <header class="entry-header">
+            <h2 class="entry-title"><a href="{{url}}" rel="bookmark">{{title}}</a></h2>
+            <div class="entry-meta">
+                <script>
+                    if ( Post_Layout === "grid") {
+                        document.write('<div class="entry-date"><span class="entry-date">{{date format="DD MMMM YYYY"}}</span></div><span class="devider">/</span>');
+                    }                
+                </script>
+                <span class="byline">
+                    <span class="author">By &nbsp;{{author}}</span>
+                </span>
+            </div> {{! .entry-meta  }}
+        </header> {{! /.entry-header  }}
+        <footer class="entry-footer clearfix">
+            {{^if featured}}
+            <script>
+                if ( Post_Layout === "grid") {
+                    document.write('{{^is "post"}}<div class="more-wraper"><a href="{{url}}" class="more-link">Continue</a></div>{{/is}}');
+                  }
+            </script>
+            {{/if}}
+            <div class="footer-meta clearfix">
+            {{#if featured}}
+                <div class="post-comment"><a class="comments-link" href="{{url}}#disqus_thread">0 Comments</a></div>
+            {{else}}
+                <script>
+                    if ( Post_Layout === "list") {
+                        document.write('<div class="post-comment"><a class="comments-link" href="{{url}}#disqus_thread">0 Comments</a></div>');
+                    }
+                </script>
+            {{/if}}
+                <div class="share-area">
+                    <div>
+                        <script type="text/javascript">
+                            function glimmerPopupWindow(url, title, w, h) {
+                                var left = (screen.width / 2) - (w / 2);
+                                var top = (screen.height / 2) - (h / 2);
+                                return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+                            }
+                        </script>
+                        {{! facebook share  }}
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute='true'}}" onclick="glimmerPopupWindow(this.href, 'facebook-share', 580, 400); return false;"><span class="fa fa-facebook"></span></a>
+
+                        {{! twitter share  }}
+                        <a href="https://twitter.com/home?status={{url absolute='true'}}" onclick="glimmerPopupWindow(this.href, 'facebook-share', 580, 400); return false;"><span class="fa fa-twitter"></span></a>
+
+                        {{! google plus share  }}
+                        <a href="https://plus.google.com/share?url={{url absolute='true'}}" onclick="glimmerPopupWindow(this.href, 'google-plus-share', 550,530); return false;"><span class="fa fa-google-plus"></span></a>
+
+                        {{! pinterest share  }}
+                        <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"><span class="fa fa-pinterest-p"></span></a>
+
+                        {{! linkedin share  }}
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{url absolute='true'}}" onclick="glimmerPopupWindow(this.href, 'linkedin-share', 550,530); return false;"><span class="fa fa-linkedin"></span></a>
+                    </div>
+                </div> {{! /.share-area  }}
+                {{#if featured}}
+                    <div class="post-view"><span>{{date format="DD MMMM YYYY"}}</span></div>
+                {{else}}
+                  <script>
+                      if ( Post_Layout === "list") {
+                          document.write('<div class="post-view"><span>{{date format="DD MMMM YYYY"}}</span></div>');
+                      }
+                  </script>
+                {{/if}}
+            </div> {{! /.footer-meta  }}
+        </footer> {{! .entry-footer  }}
+        <div id="unique-gallery-{{id}}" class="entry-content">
+            {{#is "post"}}
+                {{content}}
+                 <script>
+                    $( "div.entry-content iframe:first-child" ).remove();
+                </script>
+            {{else}}
+                {{content words="60"}}
+                <script>                
+                    $( "div.entry-content iframe:first-child" ).remove();
+                </script>
+            {{/is}}
+
+            {{#has tag="link, audio, video, status"}} 
+            <div id="unique-{{id}}" class="hidden">{{content}}</div>
+            <script>$('#unique-{{id}} > iframe:first-child').detach().appendTo('#thumbnail-preview-{{id}}');</script>
+            {{/has}}
+
+            {{#has tag=" gallery"}} 
+                <script>$('#unique-gallery-{{id}} .gallery-one').detach().appendTo('#thumbnail-preview-{{id}}');</script>
+            {{/has}}
+
+            {{#if featured}}
+                <script>$('#unique-gallery-{{id}} .gallery-one').detach().appendTo('#thumbnail-preview-{{id}}');</script>
+            {{/if}}
+
+            <script>
+                if ( Post_Layout === "list") {
+                    document.write('{{^is "post"}}<p><a href="{{url}}" class="more-link">Continue Reading</a></p>{{/is}}');
+                }
+            </script>
+
+            {{#if featured}}
+            <script>
+                if ( Post_Layout != "list") {
+                    document.write('{{^is "post"}}<p><a href="{{url}}" class="more-link">Continue Reading</a></p>{{/is}}');
+                }
+            </script>  
+            {{/if}} 
+
+        </div> {{! .entry-content  }}
+    {{/has}}
+
+    {{#has tag="quote"}} {{! This code only for quote post  }}
+        <h2 class="entry-title hidden">{{title}}</h2>
+        <div class="quote-content">
+            <div class="quote-icon"><a href="{{url}}"><span><i class="fa fa-quote-left"></i></span></a></div>
+            <blockquote>
+                {{content}}
+            </blockquote> {{! /.quote-content  }}
+        </div> {{! /.quote-content  }}
+    {{/has}}{{! / This code only for quote post  }}
+
+    {{^has tag="quote"}}{{/has}}
+    </article> {{! /.post }}    
+</div> {{! /.post  }}
