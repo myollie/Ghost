@@ -23,7 +23,7 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.cd-glimmer-one:before {
+/*.cd-glimmer-one:before {
 	content: "\e600";
 }
 .cd-glimmer-shape-four:before {
@@ -34,4 +34,4 @@
 }
 .cd-glimmer-two:before {
 	content: "\e603";
-}
+}*/

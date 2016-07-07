@@ -2856,18 +2856,18 @@ a:hover, a:active {
   background: white;
   position: relative;
 }
-.related-post .related-post-title span:before {
+/*.related-post .related-post-title span:before {
   margin-right: 10px;
   content: "\e603";
   font-family: 'glimmer';
   font-size: 15px;
-}
-.related-post .related-post-title span:after {
+}*/
+/*.related-post .related-post-title span:after {
   margin-left: 10px;
   content: "\e600";
   font-family: 'glimmer';
   font-size: 15px;
-}
+}*/
 .related-post .post-media {
   margin-top: 0;
   position: relative;
@@ -3377,18 +3377,18 @@ ul.flickr li,
   font-size: 15px;
   margin-top: 1px;
 }
-#footer-top .widget .widget-title span:before {
+/*#footer-top .widget .widget-title span:before {
   margin-right: 10px;
   content: "\e603";
   font-family: 'glimmer';
   left: -30%;
-}
-#footer-top .widget .widget-title span:after {
+}*/
+/*#footer-top .widget .widget-title span:after {
   margin-left: 10px;
   content: "\e600";
   font-family: 'glimmer';
   right: -30%;
-}
+}*/
 #footer-top .jr-insta-thumb {
   background: white;
 }
