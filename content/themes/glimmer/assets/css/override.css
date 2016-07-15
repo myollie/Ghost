@@ -1,6 +1,18 @@
 /*--------------------------------------------------------------
 # Modifications made at Sir Milo.
 --------------------------------------------------------------*/
+@font-face {
+  font-family: 'walsheim-regular';
+  src: url('../fonts/walsheim-regular/GT-Walsheim-Regular.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/walsheim-regular/GT-Walsheim-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/walsheim-regular/GT-Walsheim-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/walsheim-regular/GT-Walsheim-Regular.woff') format('truetype'); /* Safari, Android, iOS */
+}
+
+.menu-content {
+  font-family: walsheim-regular;
+}
+
 .follow-us-area .follow-link .fa {
     font-size: 1.5em;
     line-height: 1.6em;
@@ -75,6 +87,23 @@
 
 a {
   color: #ff5543;
+  font-family: walsheim-regular;
+}
+
+h2 {
+  font-family: walsheim-regular;
+}
+
+h3 {
+  font-family: walsheim-regular;
+}
+
+h5 {
+  font-family: walsheim-regular;
+}
+
+p {
+  font-family: walsheim-regular;
 }
 
 .modal-body {
@@ -84,6 +113,7 @@ a {
 .site-message h2 {
   font-size: 16px;
   font-style: italic;
+  font-family: walsheim-regular;
 }
 
 #firstname,
