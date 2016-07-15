@@ -1928,7 +1928,7 @@ a:hover, a:active {
 }
 
 #header-middle {
-  background: #f7f7f7;
+  border-bottom: 1px solid #f7f7f7;
   padding: 45px 0 60px;
   position: relative;
 }
@@ -2023,7 +2023,7 @@ a:hover, a:active {
   height: 100%;
 }
 #featured #featured-overlay {
-  background: rgba(0, 0, 0, 0.32);
+  background: #f8f8f8;
   bottom: 0;
   height: 100%;
   left: 0;
