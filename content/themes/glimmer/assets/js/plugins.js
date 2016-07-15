@@ -670,7 +670,7 @@ submenu.prepend('<span class="menu-click"><i class="menu-arrow fa fa-plus"></i><
                                  var a = $(t).text(),
                                      i = a.toLowerCase().replace(/ /g, "-");
                                  p += '<a href="/tag/' + i + '/">' + a + "</a>"
-                             }), d = "undefined" != typeof o ? '' : '<div class="featured-media"><div class="tag-list">' + p + "</div></div>", a += '<div class="item"><div class="post-thumb"><img src="' + o + '">' + d + '</div><div class="post-content"><div class="post-format"><i class="fa fa-image"></i></div><h2 class="entry-title"><a href="' + n + '">' + s + '</a></h2><div class="entry-meta"><span class="entry-date">' + r + '</span></div><div class="more-link-wrap"><a href="' + n + '" class="more-link">Continue</a></div></div></div>'
+                             }), d = "undefined" != typeof o ? '' : '<div class="featured-media"><div class="tag-list">' + p + "</div></div>", a += '<div class="item"><div class="post-thumb"><img src="' + o + '">' + d + '</div><div class="post-content"><h2 class="entry-title"><a href="' + n + '">' + s + '</a></h2><div class="entry-meta"><span class="entry-date">' + r + '</span></div><div class="more-link-wrap"><a href="' + n + '" class="more-link">Continue</a></div></div></div>'
                          }
                      a += "</div></div></div>", $("#featured-content").append(a);
                  }
