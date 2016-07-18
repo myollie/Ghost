@@ -1,5 +1,7 @@
 var handle_newsletter_signup = function () {
   Cookies.set('#subscribe-modal', 'subscribed', {expires: 100 * 365});
+  fbq('track', 'Lead');
+  console.log("successful blog newsletter signup")
   if (typeof ga === "function") {
     ga('send', 'event', 'newsletter', 'signup', 'Blog');
   }
@@ -18,7 +20,7 @@ var handle_newsletter_signup = function () {
          --------------------------------------------- */
         header_settings: function() {
 
-            //Header Padding Settings 
+            //Header Padding Settings
             var header_padding_top = (!Header_Padding['top'] ) ? '45px' : Header_Padding['top'];
             var header_padding_right = (!Header_Padding['right'] ) ? '0' : Header_Padding['right'];
             var header_padding_bottom = (!Header_Padding['bottom'] ) ? '60px' : Header_Padding['bottom'];
@@ -27,7 +29,7 @@ var handle_newsletter_signup = function () {
             $('#header-middle').css('padding', header_padding_top+' '+header_padding_right+' '+header_padding_bottom+' '+header_padding_left);
 
 
-            //Menu margin Settings 
+            //Menu margin Settings
             var menu_margin_top = (!Menu_Margin['top'] ) ? '73px' : Menu_Margin['top'];
             var menu_margin_right = (!Menu_Margin['right'] ) ? '0' : Menu_Margin['right'];
             var menu_margin_bottom = (!Menu_Margin['bottom'] ) ? '0' : Menu_Margin['bottom'];
@@ -39,7 +41,7 @@ var handle_newsletter_signup = function () {
         /* ---------------------------------------------
          Theme configure
          --------------------------------------------- */
-        themeconfig: function() { 
+        themeconfig: function() {
             $('.post .entry-header .cat-links').each(function() {
                 var tag_links = $(this).children().attr('href'); // This is your rel value
                 var tag_item = $(this).find("a").length;
@@ -188,7 +190,7 @@ var handle_newsletter_signup = function () {
                 limit: 3
             });
 
-        },        
+        },
         /* ---------------------------------------------
          Value To Placeholder
          --------------------------------------------- */
@@ -222,7 +224,7 @@ var handle_newsletter_signup = function () {
          Home Version Grid Masonry
          --------------------------------------------- */
         grid_masonry: function () {
-            if ($('#masonry-layout').length > 0) {            
+            if ($('#masonry-layout').length > 0) {
                 var container = $('#masonry-layout');
                 container.imagesLoaded( function() {
                     container.masonry({
@@ -256,7 +258,7 @@ var handle_newsletter_signup = function () {
                 zeroResultsInfo: false,
                 info_template: "<div class='post-amount'>Number of posts found: {{amount}}</div>",
                 result_template: "<div class='results'><i class='fa fa-arrow-right'></i><a href='{{link}}'>{{title}}</a></div>"
-            });      
+            });
         },
         /* ---------------------------------------------
          Gallery Carousel
@@ -279,7 +281,7 @@ var handle_newsletter_signup = function () {
                     }
                 }
             });
-        }, 
+        },
         /* ---------------------------------------------
          Grid Version Read more Fix
          --------------------------------------------- */
@@ -316,13 +318,13 @@ var handle_newsletter_signup = function () {
          Maps
          --------------------------------------------- */
         maps: function() {
-            //Latitude Callback Option 
+            //Latitude Callback Option
             var Map_Latitude = (!Contact_Info['map_latitude'] || Contact_Info['map_latitude'] === "") ? '43.04446' : Contact_Info['map_latitude'];
 
-            //Latitude Callback Option 
+            //Latitude Callback Option
             var Map_Longitude = (!Contact_Info['map_longitude'] || Contact_Info['map_longitude'] === "") ? '-76.130791' : Contact_Info['map_longitude'];
 
-            //Map Icon Callback Option 
+            //Map Icon Callback Option
             var Map_Icon = (!Contact_Info['map_icon'] || Contact_Info['map_icon'] === "") ? 'http://greenarmywky.org/images/map-icon.png' : Contact_Info['map_icon'];
 
             if ($('#gmaps').length) {
@@ -463,7 +465,7 @@ var handle_newsletter_signup = function () {
          --------------------------------------------- */
         contact_page: function() {
 
-            //Address Callback Option 
+            //Address Callback Option
             var full_Address = (!Contact_Info['full_addess'] || Contact_Info['full_addess'] === "") ? 'Creative Agency, Melborn, Australia' : Contact_Info['full_addess'];
 
             var site_Phone = (!Contact_Info['phone'] || Contact_Info['phone'] === "") ? '' : Contact_Info['phone'];
