@@ -90,19 +90,27 @@ a {
   font-family: walsheim-regular;
 }
 
-h2 {
-  font-family: walsheim-regular;
-}
-
-h3 {
-  font-family: walsheim-regular;
-}
-
-h5 {
+h1, h2, h3, h4, h5, h6 {
   font-family: walsheim-regular;
 }
 
 p {
+  font-family: walsheim-regular;
+}
+
+ol {
+  font-family: walsheim-regular;
+}
+
+ul {
+  font-family: walsheim-regular;
+}
+
+li {
+  font-family: walsheim-regular;
+}
+
+blockquote {
   font-family: walsheim-regular;
 }
 
