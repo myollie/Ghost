@@ -1943,8 +1943,9 @@ a:hover, a:active {
 #header-middle #site-logo {
   float: left;
   width: 29.5%;
-  margin-left: 25px;
+  margin-left: 38px;
   display: inline-block;
+  margin-top: -32px;
 }
 #header-middle #site-logo img {
   max-width: 310px;
@@ -1954,6 +1955,10 @@ a:hover, a:active {
   float: right;
   margin-top: 73px;
   width: 33.5%;
+}
+
+.site-logo__ollie-link {
+  margin-top: 10px;
 }
 
 .header-content {

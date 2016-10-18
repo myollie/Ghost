@@ -105,9 +105,14 @@
         width: 29.5%;
         margin-left: 25px;
         display: inline-block;
+        margin-top: -32px;
     }
     #site-logo img {
         max-width: 310px;
+    }
+
+    .site-logo__ollie-link {
+      margin-top: 10px;
     }
     #nav-right {
         float: right;
