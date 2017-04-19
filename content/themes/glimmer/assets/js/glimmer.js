@@ -15,6 +15,12 @@ var handle_newsletter_signup = function () {
 
     var glimmerApp = {
 
+       updateLocalStorage: function() {
+         if (localStorage) {
+           localStorage.setItem('referralSoure', 'OllieBlog')
+         }
+       },
+
         /* ---------------------------------------------
          Header Settings
          --------------------------------------------- */
@@ -516,6 +522,7 @@ var handle_newsletter_signup = function () {
          Initialize All Function
          --------------------------------------------- */
         initializ: function () {
+            glimmerApp.updateLocalStorage();
             glimmerApp.header_settings();
             glimmerApp.themeconfig();
             glimmerApp.postlayout();
