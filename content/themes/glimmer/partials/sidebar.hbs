@@ -32,7 +32,10 @@
                         document.write('{{> "widgets/about-widget"}}');
                     } else if ( Sidebar_Widget_Order[key] === "Ads_Widget" && Ads_Widget['show'] === true  ) {
                         document.write('{{> "widgets/ads-widget"}}');
-                        $('.ads-widget a').prop('href', Sidebar_Widget_Order['url']);
+                        $('.ads-widget a').ready(function(){
+                          $(this).prop('href', Sidebar_Widget_Order['url']);
+                        })
+                        console.log("Loaded")
                     } else if ( Sidebar_Widget_Order[key] === "Navigation_Widget" && Navigation_Widget['show'] === true  ) {
                         document.write('{{> "widgets/navigation-widget"}}');
                     } else if ( Sidebar_Widget_Order[key] === "Social_Widget" && Social_Widget['show'] === true  ) {
